@@ -7,6 +7,7 @@ services:
     volumes:
       - .:/rails
       - vscode_server_volume:/root/.vscode-server
+      - ./images:/var/mural/images
     env_file:
       - .env
     environment:
