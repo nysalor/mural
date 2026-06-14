@@ -9,12 +9,12 @@ default: &default
     font_url: "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap"
     clock_color: "#ffffff"
     date_color: "#eeeeee"
-    clock_font_size: "20vw"
-    date_font_size: "3.5vw"
+    clock_font_size: "10vw"
+    date_font_size: "1.5vw"
     show_seconds: false
     clock_shadow: "0 2px 20px rgba(0,0,0,0.8)"
     position_x: center   # left, center, right
-    position_y: center   # top, center, bottom
+    position_y: bottom   # top, center, bottom
 
 development:
   <<: *default
