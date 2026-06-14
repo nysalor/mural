@@ -32,15 +32,16 @@
   const POSITION_Y = { top: "flex-start", center: "center", bottom: "flex-end" };
 
   function applyConfig(config) {
-    const d = config.display;
+    const d       = config.display;
+    const overlay = document.getElementById("overlay");
     root.style.setProperty("--font-family",      d.font_family);
     root.style.setProperty("--clock-color",      d.clock_color);
     root.style.setProperty("--date-color",       d.date_color);
     root.style.setProperty("--clock-font-size",  d.clock_font_size);
     root.style.setProperty("--date-font-size",   d.date_font_size);
     root.style.setProperty("--clock-shadow",     d.clock_shadow);
-    root.style.setProperty("--align-items",      POSITION_X[d.position_x]  || "center");
-    root.style.setProperty("--justify-content",  POSITION_Y[d.position_y]  || "center");
+    overlay.style.alignItems     = POSITION_X[d.position_x]  || "center";
+    overlay.style.justifyContent = POSITION_Y[d.position_y]  || "center";
 
     if (d.font_url) {
       document.getElementById("google-font").href = d.font_url;
