@@ -1,0 +1,46 @@
+services:
+  rails:
+    build:
+      context: .
+      dockerfile: Dockerfile.development
+    command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/rails
+      - vscode_server_volume:/root/.vscode-server
+      - ./images:/var/mural/images
+    env_file:
+      - .env
+    environment:
+      RAILS_ENV: development
+      SECRET_KEY_BASE:
+      BASE_URL: http://localhost:3000
+      MURAL_DB_USER: root
+      MURAL_DB_PASSWORD: root
+      DB_HOST: db
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    tty: true
+    stdin_open: true
+  db:
+    image: mysql:8
+    platform: linux/amd64
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "mural_development"
+      TZ: "Asia/Tokyo"
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u", "root", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+volumes:
+  mysql-data:
+  vscode_server_volume:
+    driver: local

@@ -36,6 +36,7 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 4vw;
   gap: 1rem;
 }
 

@@ -139,8 +139,6 @@ GEM
       drb (~> 2.0)
       prism (~> 1.5)
     msgpack (1.8.3)
-    mysql2 (0.5.7)
-      bigdecimal
     net-imap (0.6.4.1)
       date
       net-protocol
@@ -288,6 +286,8 @@ GEM
     thruster (0.1.21-arm64-darwin)
     thruster (0.1.21-x86_64-linux)
     timeout (0.6.1)
+    trilogy (2.12.5)
+      bigdecimal
     tsort (0.2.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -318,13 +318,13 @@ DEPENDENCIES
   brakeman
   debug
   kamal
-  mysql2 (~> 0.5)
   puma (>= 5.0)
   rails (~> 8.0.2)
   rubocop-rails-omakase
   solid_cache
   solid_queue
   thruster
+  trilogy
   tzinfo-data
 
 BUNDLED WITH
