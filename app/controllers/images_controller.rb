@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
   def show
-    directory = Rails.configuration.mural.dig(:images, :directory)
+    directory = mural_config.dig(:images, :directory)
     filename  = params[:filename]
     path      = File.join(directory, filename)
 
