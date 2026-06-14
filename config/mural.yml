@@ -1,0 +1,28 @@
+default: &default
+  images:
+    directory: /var/mural/images
+    mode: sequential          # random or sequential
+    interval_seconds: 300     # 5分ごとに切替
+
+  display:
+    font_family: "Noto Sans JP"
+    font_url: "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap"
+    clock_color: "#ffffff"
+    date_color: "#eeeeee"
+    clock_font_size: "20vw"
+    date_font_size: "3.5vw"
+    show_seconds: true
+    clock_shadow: "0 2px 20px rgba(0,0,0,0.8)"
+
+development:
+  <<: *default
+  images:
+    directory: /var/mural/images
+    mode: sequential
+    interval_seconds: 10
+
+test:
+  <<: *default
+
+production:
+  <<: *default

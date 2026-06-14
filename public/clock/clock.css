@@ -1,0 +1,59 @@
+:root {
+  --clock-color: #ffffff;
+  --date-color: #eeeeee;
+  --clock-font-size: 20vw;
+  --date-font-size: 3.5vw;
+  --clock-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+  --font-family: sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+#bg {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 1s ease-in-out;
+}
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#clock {
+  font-family: var(--font-family);
+  font-size: var(--clock-font-size);
+  font-weight: 300;
+  color: var(--clock-color);
+  text-shadow: var(--clock-shadow);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+#date {
+  font-family: var(--font-family);
+  font-size: var(--date-font-size);
+  font-weight: 400;
+  color: var(--date-color);
+  text-shadow: var(--clock-shadow);
+  letter-spacing: 0.05em;
+}
