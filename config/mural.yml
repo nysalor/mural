@@ -11,8 +11,10 @@ default: &default
     date_color: "#eeeeee"
     clock_font_size: "20vw"
     date_font_size: "3.5vw"
-    show_seconds: true
+    show_seconds: false
     clock_shadow: "0 2px 20px rgba(0,0,0,0.8)"
+    position_x: center   # left, center, right
+    position_y: center   # top, center, bottom
 
 development:
   <<: *default
