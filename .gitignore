@@ -30,3 +30,10 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore sample images
+/images/*
+!/images/.gitkeep
+
+# Ignore mac resource fork files
+.DS_Store
