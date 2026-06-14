@@ -2,8 +2,8 @@ module Api
   class ImagesController < ApplicationController
     def next
       config    = Rails.configuration.mural
-      directory = config.dig("images", "directory")
-      mode      = config.dig("images", "mode")
+      directory = config.dig(:images, :directory)
+      mode      = config.dig(:images, :mode)
       image_url = ImageSequencer.pick(directory, mode)
 
       if image_url
