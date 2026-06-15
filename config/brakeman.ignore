@@ -1,0 +1,28 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "bcf3eec7563e72c6e2ff41ad47dc7de3b5c8e9c3ff8e88bff46855397e73b4d6",
+      "check_name": "SendFile",
+      "message": "Parameter value used in file name",
+      "file": "app/controllers/images_controller.rb",
+      "line": 10,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(File.join(mural_config.dig(:images, :directory), File.basename(params[:filename])), :disposition => :inline)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ImagesController",
+        "method": "show"
+      },
+      "user_input": "params[:filename]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    }
+  ],
+  "brakeman_version": "8.0.5"
+}
