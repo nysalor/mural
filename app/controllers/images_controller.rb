@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
   def show
     directory = mural_config.dig(:images, :directory)
-    filename  = params[:filename]
+    filename  = File.basename(params[:filename])
     path      = File.join(directory, filename)
 
     if File.exist?(path) && File.file?(path)
