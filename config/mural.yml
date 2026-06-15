@@ -2,7 +2,7 @@ default: &default
   images:
     directory: <%= ENV.fetch("MURAL_IMAGE_DIR", "/var/mural/images") %>
     mode: sequential          # random or sequential
-    interval_seconds: 300     # 5分ごとに切替
+    interval_seconds: 60     # 1分ごとに切替
 
   display:
     font_family: "Noto Sans JP"
