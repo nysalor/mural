@@ -52,8 +52,6 @@ production:
   primary: &primary_production
     <<: *default
     database: mural_production
-    username: mural
-    password: <%= ENV["MURAL_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: mural_production_cache
