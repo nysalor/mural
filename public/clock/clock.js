@@ -107,12 +107,10 @@
       const overlay = document.getElementById("overlay");
 
       if (action === "stop") {
-        document.body.style.visibility = "hidden";
+        overlay.style.backgroundColor = "rgba(0,0,0,1)";
       } else if (action === "dim") {
-        document.body.style.visibility = "";
         overlay.style.backgroundColor = `rgba(0,0,0,${(dim_level / 100).toFixed(2)})`;
       } else {
-        document.body.style.visibility = "";
         overlay.style.backgroundColor = "";
       }
     } catch {
