@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get "images/:filename", to: "images#show", filename: /.+/
 
   namespace :api do
-    get "images/next", to: "images#next"
-    get "config",      to: "config#show"
+    get  "images/next",     to: "images#next"
+    get  "config",          to: "config#show"
+    get  "schedule/status", to: "schedules#status"
+    resources :schedules, only: [:index, :create, :update, :destroy]
   end
 end

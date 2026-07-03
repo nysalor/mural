@@ -98,9 +98,43 @@
     setInterval(() => fetchNextImage().then(changeBackground), intervalSeconds * 1000);
   }
 
+  // --- スケジュール ---
+  async function checkSchedule() {
+    try {
+      const res = await fetch("/api/schedule/status");
+      if (!res.ok) return;
+      const { action, dim_level } = await res.json();
+      const overlay = document.getElementById("overlay");
+
+      if (action === "stop") {
+        document.body.style.visibility = "hidden";
+      } else if (action === "dim") {
+        document.body.style.visibility = "";
+        overlay.style.backgroundColor = `rgba(0,0,0,${(dim_level / 100).toFixed(2)})`;
+      } else {
+        document.body.style.visibility = "";
+        overlay.style.backgroundColor = "";
+      }
+    } catch {
+      // スケジュール取得失敗時は何もしない
+    }
+  }
+
+  function startScheduleCheck() {
+    checkSchedule();
+    // 毎分0秒に合わせてチェック
+    const now  = new Date();
+    const msToNextMinute = (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
+    setTimeout(() => {
+      checkSchedule();
+      setInterval(checkSchedule, 60 * 1000);
+    }, msToNextMinute);
+  }
+
   // --- 起動 ---
   const config = await loadConfig();
   const { intervalSeconds, showSeconds } = applyConfig(config);
   startClock(showSeconds);
   startImageRotation(intervalSeconds);
+  startScheduleCheck();
 })();
