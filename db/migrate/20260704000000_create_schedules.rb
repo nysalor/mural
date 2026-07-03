@@ -11,6 +11,6 @@ class CreateSchedules < ActiveRecord::Migration[8.0]
       t.timestamps
     end
 
-    add_index :schedules, [:day_of_week, :enabled]
+    add_index :schedules, [ :day_of_week, :enabled ]
   end
 end
