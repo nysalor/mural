@@ -2,6 +2,13 @@
   const DAYS    = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"];
   const API     = "/api/schedules";
 
+  // "2000-01-01T22:00:00.000Z" や "22:00:00" から "HH:MM" を抽出
+  function toHHMM(t) {
+    if (!t) return "";
+    const match = t.match(/(\d{2}:\d{2})/);
+    return match ? match[1] : t;
+  }
+
   const form      = document.getElementById("schedule-form");
   const editId    = document.getElementById("edit-id");
   const formTitle = document.getElementById("form-title");
@@ -52,8 +59,8 @@
       const tr = document.createElement("tr");
       tr.innerHTML = `
         <td>${DAYS[s.day_of_week]}</td>
-        <td>${s.start_time.slice(0, 5)}</td>
-        <td>${s.end_time.slice(0, 5)}</td>
+        <td>${toHHMM(s.start_time)}</td>
+        <td>${toHHMM(s.end_time)}</td>
         <td><span class="badge badge-${s.action}">${s.action}</span></td>
         <td>${s.action === "dim" ? s.dim_level + "%" : "—"}</td>
         <td><span class="enabled-dot ${s.enabled ? "on" : "off"}"></span></td>
@@ -81,8 +88,8 @@
   function startEdit(s) {
     editId.value                                    = s.id;
     document.getElementById("day_of_week").value   = s.day_of_week;
-    document.getElementById("start_time").value    = s.start_time.slice(0, 5);
-    document.getElementById("end_time").value      = s.end_time.slice(0, 5);
+    document.getElementById("start_time").value    = toHHMM(s.start_time);
+    document.getElementById("end_time").value      = toHHMM(s.end_time);
     actionSel.value                                 = s.action;
     dimRange.value                                  = s.dim_level;
     dimLabel.textContent                            = s.dim_level;
