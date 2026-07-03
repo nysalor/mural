@@ -104,13 +104,17 @@
       const res = await fetch("/api/schedule/status");
       if (!res.ok) return;
       const { action, dim_level } = await res.json();
-      const overlay = document.getElementById("overlay");
+      const overlay   = document.getElementById("overlay");
+      const blackout  = document.getElementById("blackout");
 
       if (action === "stop") {
-        overlay.style.backgroundColor = "rgba(0,0,0,1)";
+        blackout.style.display = "block";
+        overlay.style.backgroundColor = "";
       } else if (action === "dim") {
+        blackout.style.display = "none";
         overlay.style.backgroundColor = `rgba(0,0,0,${(dim_level / 100).toFixed(2)})`;
       } else {
+        blackout.style.display = "none";
         overlay.style.backgroundColor = "";
       }
     } catch {

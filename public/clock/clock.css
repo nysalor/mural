@@ -54,6 +54,14 @@ html, body {
   letter-spacing: -0.02em;
 }
 
+#blackout {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 9999;
+}
+
 #date {
   font-family: var(--font-family);
   font-size: var(--date-font-size);
