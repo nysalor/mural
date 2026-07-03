@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mural 管理画面</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header>
+    <h1>Mural スケジュール管理</h1>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <h2 id="form-title">スケジュールを追加</h2>
+      <form id="schedule-form">
+        <input type="hidden" id="edit-id">
+
+        <div class="form-row">
+          <label>曜日</label>
+          <select id="day_of_week">
+            <option value="0">日曜日</option>
+            <option value="1">月曜日</option>
+            <option value="2">火曜日</option>
+            <option value="3">水曜日</option>
+            <option value="4">木曜日</option>
+            <option value="5">金曜日</option>
+            <option value="6">土曜日</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label>開始時刻</label>
+          <input type="time" id="start_time" required>
+        </div>
+
+        <div class="form-row">
+          <label>終了時刻</label>
+          <input type="time" id="end_time" required>
+        </div>
+
+        <div class="form-row">
+          <label>アクション</label>
+          <select id="action">
+            <option value="dim">暗くする (dim)</option>
+            <option value="stop">停止 (stop)</option>
+          </select>
+        </div>
+
+        <div class="form-row" id="dim-level-row">
+          <label>暗さ <span id="dim-label">80</span>%</label>
+          <input type="range" id="dim_level" min="0" max="100" value="80">
+        </div>
+
+        <div class="form-row">
+          <label>有効</label>
+          <input type="checkbox" id="enabled" checked>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="submit-btn">追加</button>
+          <button type="button" id="cancel-btn" style="display:none">キャンセル</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <h2>スケジュール一覧</h2>
+      <table id="schedule-table">
+        <thead>
+          <tr>
+            <th>曜日</th>
+            <th>開始</th>
+            <th>終了</th>
+            <th>アクション</th>
+            <th>暗さ</th>
+            <th>有効</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="schedule-list"></tbody>
+      </table>
+      <p id="empty-msg" style="display:none">スケジュールがありません</p>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

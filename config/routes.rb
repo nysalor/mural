@@ -7,8 +7,13 @@ Rails.application.routes.draw do
 
   get "images/:filename", to: "images#show", filename: /.+/
 
+  get "admin",  to: redirect("/admin/")
+  get "clock",  to: redirect("/clock/")
+
   namespace :api do
-    get "images/next", to: "images#next"
-    get "config",      to: "config#show"
+    get  "images/next",     to: "images#next"
+    get  "config",          to: "config#show"
+    get  "schedule/status", to: "schedules#status"
+    resources :schedules, only: [ :index, :create, :update, :destroy ]
   end
 end
